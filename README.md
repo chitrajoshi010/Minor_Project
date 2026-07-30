@@ -1,4 +1,4 @@
-# ESP32-S3 Deployment — Complete Explanation
+# Forest Acoustic Event Detection using TinyML on ESP32-S3
 
 ## 1. What is ESP-IDF?
 
