@@ -1,0 +1,446 @@
+ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1564
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xd24
+load:0x403cb700,len:0x2ed4
+entry 0x403c8928
+[0;32mI (27) boot: ESP-IDF v5.4.2 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jul 15 2026 18:43:41[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v0.2[0m
+[0;32mI (30) boot: efuse block revision: v1.4[0m
+[0;32mI (33) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (37) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (41) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (45) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (52) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (65) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (78) boot: End of partition table[0m
+[0;32mI (81) esp_image: segment 0: paddr=00010020 vaddr=3c040020 size=29d74h (171380) map[0m
+[0;32mI (119) esp_image: segment 1: paddr=00039d9c vaddr=3fc93000 size=02a98h ( 10904) load[0m
+[0;32mI (121) esp_image: segment 2: paddr=0003c83c vaddr=40374000 size=037dch ( 14300) load[0m
+[0;32mI (126) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=3c0b0h (245936) map[0m
+[0;32mI (173) esp_image: segment 4: paddr=0007c0d8 vaddr=403777dc size=0b760h ( 46944) load[0m
+[0;32mI (184) esp_image: segment 5: paddr=00087840 vaddr=600fe000 size=0001ch (    28) load[0m
+[0;32mI (190) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (190) boot: Disabling RNG early entropy source...[0m
+[0;32mI (203) cpu_start: Multicore app[0m
+[0;32mI (212) cpu_start: Pro cpu start user code[0m
+[0;32mI (212) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (212) app_init: Application information:[0m
+[0;32mI (212) app_init: Project name:     hello_world[0m
+[0;32mI (216) app_init: App version:      1[0m
+[0;32mI (220) app_init: Compile time:     Jul 15 2026 18:43:36[0m
+[0;32mI (225) app_init: ELF file SHA256:  0785686f3...[0m
+[0;32mI (229) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (233) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (237) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (241) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (244) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (251) heap_init: At 3FCDA020 len 0000F6F0 (61 KiB): RAM[0m
+[0;32mI (256) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (261) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (266) heap_init: At 600FE01C len 00001FCC (7 KiB): RTCRAM[0m
+[0;32mI (272) spi_flash: detected chip: boya[0m
+[0;32mI (275) spi_flash: flash io: dio[0m
+[0;33mW (278) spi_flash: Detected size(16384k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (290) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (297) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (303) main_task: Started on CPU0[0m
+[0;32mI (323) main_task: Calling app_main()[0m
+
+========================================
+  Forest Acoustic Classifier — ESP32-S3
+========================================
+[OK] Model loaded (19704 bytes)
+[OK] Tensors allocated
+  Input:  type=9, shape=[1,64,251,1], scale=0.076175, zp=-13
+  Output: type=9, shape=[1,5], scale=0.003906, zp=-128
+  Arena:  259864 / 276480 bytes used
+[...] Initializing I2S microphone (GPIO BCK=17, WS=15, DIN=16)...
+[0;32mI (353) audio_capture: I2S microphone initialized (GPIO BCK=17, WS=15, DIN=16)[0m
+[OK] I2S microphone initialized
+[0;32mI (363) spectrogram: Spectrogram engine ready — streaming mode, 37 KB heap[0m
+[OK] Spectrogram engine initialized
+
+========================================
+  Ready — capturing audio
+========================================
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9805
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0195  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9805  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0039  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0117  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9883  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9375
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0625  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9375  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0039  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0039  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9922  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0117  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9883  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.8750
+  Raw logits: Axe: 0.0000  Chainsaw: 0.1250  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.8750  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9805
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0195  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9805  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9844
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0156  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9844  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9492
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0508  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9492  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.8984
+  Raw logits: Axe: 0.0000  Chainsaw: 0.1016  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.8984  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0039  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0039  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0078  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9922  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0039  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9922  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9219
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0781  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9219  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0039  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0117  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9883  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0117  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9883  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0117  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9883  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9727
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0273  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9727  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9766
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0234  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9766  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0078  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9922  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9961  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 4)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Chainsaw: 0.0078  Gunshot: 0.0000  Handsaw: 0.0000  Background: 0.9922  
+--- Waiting 1 second before next capture ---
+

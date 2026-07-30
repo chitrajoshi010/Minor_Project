@@ -1,0 +1,13 @@
+idf_component_register(
+    SRCS
+        "main.cpp"
+        "audio_capture.cpp"
+        "spectrogram.cpp"
+    INCLUDE_DIRS
+        "."
+    PRIV_REQUIRES
+        driver
+        esp_driver_i2s
+        esp-tflite-micro
+        espressif__esp-dsp
+)

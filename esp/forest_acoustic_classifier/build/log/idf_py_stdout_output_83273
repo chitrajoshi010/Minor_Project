@@ -1,0 +1,1551 @@
+x+���ESP-ROM:esp32s3-20210327
+Build:Mar 27 2021
+rst:0x1 (POWERON),boot:0x8 (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fce2810,len:0x1564
+load:0x403c8700,len:0x4
+load:0x403c8704,len:0xd24
+load:0x403cb700,len:0x2ed4
+entry 0x403c8928
+[0;32mI (27) boot: ESP-IDF v5.4.2 2nd stage bootloader[0m
+[0;32mI (27) boot: compile time Jul 15 2026 18:43:41[0m
+[0;32mI (27) boot: Multicore bootloader[0m
+[0;32mI (27) boot: chip revision: v0.2[0m
+[0;32mI (30) boot: efuse block revision: v1.3[0m
+[0;32mI (33) boot.esp32s3: Boot SPI Speed : 80MHz[0m
+[0;32mI (37) boot.esp32s3: SPI Mode       : DIO[0m
+[0;32mI (41) boot.esp32s3: SPI Flash Size : 2MB[0m
+[0;32mI (45) boot: Enabling RNG early entropy source...[0m
+[0;32mI (49) boot: Partition Table:[0m
+[0;32mI (52) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (58) boot:  0 nvs              WiFi data        01 02 00009000 00006000[0m
+[0;32mI (65) boot:  1 phy_init         RF data          01 01 0000f000 00001000[0m
+[0;32mI (71) boot:  2 factory          factory app      00 00 00010000 00100000[0m
+[0;32mI (78) boot: End of partition table[0m
+[0;32mI (81) esp_image: segment 0: paddr=00010020 vaddr=3c040020 size=29984h (170372) map[0m
+[0;32mI (118) esp_image: segment 1: paddr=000399ac vaddr=3fc93000 size=02a98h ( 10904) load[0m
+[0;32mI (121) esp_image: segment 2: paddr=0003c44c vaddr=40374000 size=03bcch ( 15308) load[0m
+[0;32mI (126) esp_image: segment 3: paddr=00040020 vaddr=42000020 size=3c0b0h (245936) map[0m
+[0;32mI (173) esp_image: segment 4: paddr=0007c0d8 vaddr=40377bcc size=0b370h ( 45936) load[0m
+[0;32mI (184) esp_image: segment 5: paddr=00087450 vaddr=600fe000 size=0001ch (    28) load[0m
+[0;32mI (190) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (190) boot: Disabling RNG early entropy source...[0m
+[0;32mI (202) cpu_start: Multicore app[0m
+[0;32mI (211) cpu_start: Pro cpu start user code[0m
+[0;32mI (211) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (212) app_init: Application information:[0m
+[0;32mI (212) app_init: Project name:     hello_world[0m
+[0;32mI (216) app_init: App version:      1[0m
+[0;32mI (219) app_init: Compile time:     Jul 15 2026 18:43:36[0m
+[0;32mI (224) app_init: ELF file SHA256:  3d6fcfb63...[0m
+[0;32mI (229) app_init: ESP-IDF:          v5.4.2[0m
+[0;32mI (232) efuse_init: Min chip rev:     v0.0[0m
+[0;32mI (236) efuse_init: Max chip rev:     v0.99 [0m
+[0;32mI (240) efuse_init: Chip rev:         v0.2[0m
+[0;32mI (244) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (250) heap_init: At 3FCDA020 len 0000F6F0 (61 KiB): RAM[0m
+[0;32mI (255) heap_init: At 3FCE9710 len 00005724 (21 KiB): RAM[0m
+[0;32mI (260) heap_init: At 3FCF0000 len 00008000 (32 KiB): DRAM[0m
+[0;32mI (266) heap_init: At 600FE01C len 00001FCC (7 KiB): RTCRAM[0m
+[0;32mI (272) spi_flash: detected chip: generic[0m
+[0;32mI (275) spi_flash: flash io: dio[0m
+[0;33mW (278) spi_flash: Detected size(8192k) larger than the size in the binary image header(2048k). Using the size in the binary image header.[0m
+[0;32mI (290) sleep_gpio: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (296) sleep_gpio: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (303) main_task: Started on CPU0[0m
+[0;32mI (323) main_task: Calling app_main()[0m
+
+========================================
+  Forest Acoustic Classifier — ESP32-S3
+========================================
+[OK] Model loaded (18664 bytes)
+[OK] Tensors allocated
+  Input:  type=9, shape=[1,64,251,1], scale=0.053753, zp=17
+  Output: type=9, shape=[1,6], scale=0.003906, zp=-128
+  Arena:  260376 / 276480 bytes used
+[...] Initializing I2S microphone (GPIO BCK=17, WS=15, DIN=16)...
+[0;32mI (353) audio_capture: I2S microphone initialized (GPIO BCK=17, WS=15, DIN=16)[0m
+[OK] I2S microphone initialized
+[0;32mI (363) spectrogram: Spectrogram engine ready — streaming mode, 37 KB heap[0m
+[OK] Spectrogram engine initialized
+
+========================================
+  Ready — capturing audio
+========================================
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Background: 0.9922  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9609
+  Raw logits: Axe: 0.0000  Background: 0.9609  Chainsaw: 0.0000  Gunshot: 0.0391  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.9688
+  Raw logits: Axe: 0.0000  Background: 0.0312  Chainsaw: 0.0000  Gunshot: 0.9688  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.8633
+  Raw logits: Axe: 0.0000  Background: 0.8633  Chainsaw: 0.1250  Gunshot: 0.0117  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.9180
+  Raw logits: Axe: 0.0000  Background: 0.0508  Chainsaw: 0.9180  Gunshot: 0.0273  Handsaw: 0.0000  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.4766
+  Raw logits: Axe: 0.0039  Background: 0.2852  Chainsaw: 0.4766  Gunshot: 0.1719  Handsaw: 0.0000  Tree Falling: 0.0625  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.5430
+  Raw logits: Axe: 0.0039  Background: 0.5430  Chainsaw: 0.3984  Gunshot: 0.0586  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.8398
+  Raw logits: Axe: 0.0000  Background: 0.0703  Chainsaw: 0.8398  Gunshot: 0.0898  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.8242
+  Raw logits: Axe: 0.0039  Background: 0.0625  Chainsaw: 0.8242  Gunshot: 0.0000  Handsaw: 0.0859  Tree Falling: 0.0156  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.5391
+  Raw logits: Axe: 0.0000  Background: 0.5391  Chainsaw: 0.4375  Gunshot: 0.0234  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Background: 0.9922  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.7656
+  Raw logits: Axe: 0.0273  Background: 0.7656  Chainsaw: 0.0117  Gunshot: 0.0195  Handsaw: 0.1641  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9375
+  Raw logits: Axe: 0.0039  Background: 0.9375  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0117  Tree Falling: 0.0391  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.6484
+  Raw logits: Axe: 0.0039  Background: 0.6484  Chainsaw: 0.0000  Gunshot: 0.0156  Handsaw: 0.2578  Tree Falling: 0.0742  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.8320
+  Raw logits: Axe: 0.0000  Background: 0.8320  Chainsaw: 0.1602  Gunshot: 0.0039  Handsaw: 0.0000  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.6836
+  Raw logits: Axe: 0.0000  Background: 0.0039  Chainsaw: 0.0000  Gunshot: 0.6836  Handsaw: 0.1641  Tree Falling: 0.1484  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9570
+  Raw logits: Axe: 0.0000  Background: 0.9570  Chainsaw: 0.0000  Gunshot: 0.0430  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9805
+  Raw logits: Axe: 0.0117  Background: 0.9805  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0039  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.5391
+  Raw logits: Axe: 0.0352  Background: 0.0039  Chainsaw: 0.1055  Gunshot: 0.0547  Handsaw: 0.5391  Tree Falling: 0.2617  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Background: 0.9922  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9688
+  Raw logits: Axe: 0.0000  Background: 0.9688  Chainsaw: 0.0000  Gunshot: 0.0312  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0039  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0039  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.4922
+  Raw logits: Axe: 0.0000  Background: 0.0977  Chainsaw: 0.0273  Gunshot: 0.4922  Handsaw: 0.0859  Tree Falling: 0.2969  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.8320
+  Raw logits: Axe: 0.0117  Background: 0.8320  Chainsaw: 0.0000  Gunshot: 0.0977  Handsaw: 0.0508  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.9727
+  Raw logits: Axe: 0.0000  Background: 0.0078  Chainsaw: 0.0000  Gunshot: 0.9727  Handsaw: 0.0039  Tree Falling: 0.0117  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.8242
+  Raw logits: Axe: 0.0000  Background: 0.8242  Chainsaw: 0.0000  Gunshot: 0.1758  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.5820
+  Raw logits: Axe: 0.0000  Background: 0.3477  Chainsaw: 0.5820  Gunshot: 0.0664  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.3984
+  Raw logits: Axe: 0.0000  Background: 0.3984  Chainsaw: 0.0234  Gunshot: 0.3242  Handsaw: 0.0117  Tree Falling: 0.2383  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9844
+  Raw logits: Axe: 0.0000  Background: 0.9844  Chainsaw: 0.0000  Gunshot: 0.0117  Handsaw: 0.0039  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9805
+  Raw logits: Axe: 0.0000  Background: 0.9805  Chainsaw: 0.0000  Gunshot: 0.0195  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.8320
+  Raw logits: Axe: 0.0000  Background: 0.8320  Chainsaw: 0.0000  Gunshot: 0.1602  Handsaw: 0.0039  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9844
+  Raw logits: Axe: 0.0000  Background: 0.9844  Chainsaw: 0.0000  Gunshot: 0.0156  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Background: 0.9922  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Background: 0.9883  Chainsaw: 0.0000  Gunshot: 0.0117  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.8750
+  Raw logits: Axe: 0.0000  Background: 0.1250  Chainsaw: 0.0000  Gunshot: 0.8750  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.5195
+  Raw logits: Axe: 0.0000  Background: 0.0078  Chainsaw: 0.0000  Gunshot: 0.5195  Handsaw: 0.0898  Tree Falling: 0.3828  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.4102
+  Raw logits: Axe: 0.0000  Background: 0.4102  Chainsaw: 0.0039  Gunshot: 0.2734  Handsaw: 0.0898  Tree Falling: 0.2227  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Tree Falling (index 5)
+  Confidence: 0.7305
+  Raw logits: Axe: 0.0000  Background: 0.2383  Chainsaw: 0.0312  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.7305  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Background: 0.9922  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Background: 0.9883  Chainsaw: 0.0000  Gunshot: 0.0117  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.6406
+  Raw logits: Axe: 0.1016  Background: 0.6406  Chainsaw: 0.0039  Gunshot: 0.0820  Handsaw: 0.1680  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9805
+  Raw logits: Axe: 0.0117  Background: 0.9805  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9297
+  Raw logits: Axe: 0.0078  Background: 0.9297  Chainsaw: 0.0039  Gunshot: 0.0430  Handsaw: 0.0156  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.5547
+  Raw logits: Axe: 0.0781  Background: 0.3672  Chainsaw: 0.0000  Gunshot: 0.5547  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.9336
+  Raw logits: Axe: 0.0195  Background: 0.0469  Chainsaw: 0.0000  Gunshot: 0.9336  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Axe (index 0)
+  Confidence: 0.3672
+  Raw logits: Axe: 0.3672  Background: 0.0586  Chainsaw: 0.0000  Gunshot: 0.1992  Handsaw: 0.3672  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9570
+  Raw logits: Axe: 0.0000  Background: 0.9570  Chainsaw: 0.0000  Gunshot: 0.0312  Handsaw: 0.0078  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.5156
+  Raw logits: Axe: 0.0039  Background: 0.5156  Chainsaw: 0.0312  Gunshot: 0.1250  Handsaw: 0.3086  Tree Falling: 0.0156  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.8203
+  Raw logits: Axe: 0.0039  Background: 0.8203  Chainsaw: 0.0000  Gunshot: 0.1758  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9531
+  Raw logits: Axe: 0.0039  Background: 0.9531  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0391  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9492
+  Raw logits: Axe: 0.0039  Background: 0.9492  Chainsaw: 0.0000  Gunshot: 0.0430  Handsaw: 0.0039  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Background: 0.9883  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0078  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Gunshot (index 3)
+  Confidence: 0.9727
+  Raw logits: Axe: 0.0000  Background: 0.0234  Chainsaw: 0.0000  Gunshot: 0.9727  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.6211
+  Raw logits: Axe: 0.0039  Background: 0.6211  Chainsaw: 0.0000  Gunshot: 0.3750  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.6445
+  Raw logits: Axe: 0.0820  Background: 0.2305  Chainsaw: 0.0039  Gunshot: 0.0312  Handsaw: 0.6445  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Background: 0.9922  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9688
+  Raw logits: Axe: 0.0000  Background: 0.9688  Chainsaw: 0.0000  Gunshot: 0.0312  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0039  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9922
+  Raw logits: Axe: 0.0000  Background: 0.9922  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9727
+  Raw logits: Axe: 0.0000  Background: 0.9727  Chainsaw: 0.0234  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.7578
+  Raw logits: Axe: 0.0000  Background: 0.1484  Chainsaw: 0.7578  Gunshot: 0.0781  Handsaw: 0.0000  Tree Falling: 0.0156  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.8672
+  Raw logits: Axe: 0.0000  Background: 0.0391  Chainsaw: 0.8672  Gunshot: 0.0547  Handsaw: 0.0000  Tree Falling: 0.0352  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.9492
+  Raw logits: Axe: 0.0000  Background: 0.0156  Chainsaw: 0.9492  Gunshot: 0.0000  Handsaw: 0.0234  Tree Falling: 0.0117  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.5469
+  Raw logits: Axe: 0.0000  Background: 0.5469  Chainsaw: 0.3633  Gunshot: 0.0859  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.9375
+  Raw logits: Axe: 0.0000  Background: 0.0117  Chainsaw: 0.9375  Gunshot: 0.0391  Handsaw: 0.0000  Tree Falling: 0.0117  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.8828
+  Raw logits: Axe: 0.0039  Background: 0.0117  Chainsaw: 0.8828  Gunshot: 0.0117  Handsaw: 0.0039  Tree Falling: 0.0859  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.6914
+  Raw logits: Axe: 0.0000  Background: 0.2266  Chainsaw: 0.6914  Gunshot: 0.0664  Handsaw: 0.0039  Tree Falling: 0.0117  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.6133
+  Raw logits: Axe: 0.0039  Background: 0.0391  Chainsaw: 0.6133  Gunshot: 0.1445  Handsaw: 0.0000  Tree Falling: 0.1992  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9805
+  Raw logits: Axe: 0.0000  Background: 0.9805  Chainsaw: 0.0000  Gunshot: 0.0195  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.9883
+  Raw logits: Axe: 0.0000  Background: 0.0000  Chainsaw: 0.0078  Gunshot: 0.0000  Handsaw: 0.9883  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.9961  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.9961  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0039  Background: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.9961  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.9805
+  Raw logits: Axe: 0.0156  Background: 0.0000  Chainsaw: 0.0039  Gunshot: 0.0000  Handsaw: 0.9805  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.9531
+  Raw logits: Axe: 0.0430  Background: 0.0000  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.9531  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Chainsaw (index 2)
+  Confidence: 0.4453
+  Raw logits: Axe: 0.0234  Background: 0.0039  Chainsaw: 0.4453  Gunshot: 0.0039  Handsaw: 0.1602  Tree Falling: 0.3633  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.9492
+  Raw logits: Axe: 0.0039  Background: 0.0000  Chainsaw: 0.0234  Gunshot: 0.0000  Handsaw: 0.9492  Tree Falling: 0.0234  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Handsaw (index 4)
+  Confidence: 0.9414
+  Raw logits: Axe: 0.0273  Background: 0.0000  Chainsaw: 0.0312  Gunshot: 0.0000  Handsaw: 0.9414  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Axe (index 0)
+  Confidence: 0.8320
+  Raw logits: Axe: 0.8320  Background: 0.1172  Chainsaw: 0.0156  Gunshot: 0.0273  Handsaw: 0.0039  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9961
+  Raw logits: Axe: 0.0000  Background: 0.9961  Chainsaw: 0.0000  Gunshot: 0.0000  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9844
+  Raw logits: Axe: 0.0078  Background: 0.9844  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0000  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.9102
+  Raw logits: Axe: 0.0781  Background: 0.9102  Chainsaw: 0.0000  Gunshot: 0.0078  Handsaw: 0.0000  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
+  Class: Background (index 1)
+  Confidence: 0.8828
+  Raw logits: Axe: 0.1016  Background: 0.8828  Chainsaw: 0.0000  Gunshot: 0.0039  Handsaw: 0.0078  Tree Falling: 0.0039  
+--- Waiting 1 second before next capture ---
+
+--- Capturing 2.5s + spectrogram...
+[OK] Spectrogram computed
+[...] Running inference...
+[OK] Inference complete
+--- Prediction ---
